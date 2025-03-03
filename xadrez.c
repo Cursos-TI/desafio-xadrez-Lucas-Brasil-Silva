@@ -7,10 +7,12 @@ int main() {
     const int torreMovimento = 5;
     const int bispoMovimento = 5;
     const int rainhaMovimento = 8;
+    const int cavaloMovimento = 3;
     
     // Declaração das variáveis de iteraçào dos loops.
     int j = 0;
     int i = 0;
+    int c = 1;
 
     // Move a Torre 5 casas para a Direita.
     do {
@@ -30,13 +32,23 @@ int main() {
    {
     printf("Esquerda!\n"); //Imprime os movimentos da Rainha.
    }
+
+   // Move o Cavalo 2 casas para baixo e 1 para a esquerda.
+   while (c < cavaloMovimento)
+   {
+    printf("Baixo!\n");
+
+    // Faz o último movimento do cavalo para a esquerda, quando já tiver sido movido 2 casas para baixo.
+    for (int f = 2; f == c; f++)
+    {
+        printf("Esquerda!");
+    }
+    c++;
+
+   }
     
     return 0;
 }
-
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
 
     // Nível Mestre - Funções Recursivas e Loops Aninhados
     // Sugestão: Substitua as movimentações das peças por funções recursivas.
