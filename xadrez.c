@@ -1,6 +1,55 @@
 #include <stdio.h>
 
-// Este programa simula os movimentos de 3 peças de xadrez: Torre, Bispo e Rainha. Além de imprime na tela os comandos de movimento de cada uma delas.
+// Função responsável por simular os movimentos da Torre.
+void moverTorre(int casas) {
+    if ( casas > 0) 
+    {
+        printf("Direita!\n"); //Imprime os movimentos da Torre.
+        moverTorre(casas - 1);
+    }
+}
+
+// Função responsável por simular o movimento da Rainha.
+void moverRainha(int casas) {
+    if (casas > 0)
+    {
+        printf("Esquerda!\n"); //Imprime os movimentos da Rainha.
+        moverRainha(casas - 1);
+    }
+}
+
+// Função responsável por  simular o movimento em diagonal do bispo, alternando em cima e direita.
+void moverBispo(int casas) {
+    if (casas > 0)
+    {
+        //Loops aninhados responsáveis por simular o movimento diagonal, o loop externo simula o movimento para cima e o loop interno simula a direita.
+        for (int i = 0; i < 1; i++)
+        {
+            printf("Cima! ");
+            for (int j = 0; j < 1; j++)
+            {
+                printf("Direita!\n");
+            }
+        }
+        moverBispo(casas - 1);
+    }
+}
+
+// Funçao responsável por simular o movimento do cavalo.
+void moverCavalo(int casas) {
+
+    // Loops aninhados responsáveis por simular o movimento em L do cavalo, o loop externo simula o movimento para cima e o loop interno simula a direita, formando um movimento incompleto da peça.
+    for (int i = 1; i < casas; i++)
+    {
+        printf("Cima!\n");
+        for (int j = 2; j == i; j++)
+        {
+            printf("Direita!\n");
+        }
+    }
+}
+
+// Este programa simula os movimentos de 4 peças de xadrez: Torre, Bispo, Rainha e Cavalo. Além de imprime na tela os comandos de movimento de cada uma delas.
 int main() {
     
     // Declaração das constantes com o número de movimentos das peças.
@@ -9,50 +58,11 @@ int main() {
     const int rainhaMovimento = 8;
     const int cavaloMovimento = 3;
     
-    // Declaração das variáveis de iteraçào dos loops.
-    int j = 0;
-    int i = 0;
-    int c = 1;
-
-    // Move a Torre 5 casas para a Direita.
-    do {
-        printf("Direita!\n"); //Imprime os movimentos da Torre.
-        i++;
-    } while (i < torreMovimento);
-
-    // Move o Bispo 5 casas para Cima e Direita.
-    while (j < bispoMovimento)
-    {
-        printf("Cima, Direita!\n"); //Imprime os movimentos do Bispo.
-        j++;
-    }
-    
-    // Move a rainha 8 casas para a esquerda.
-   for (int h = 0; h < rainhaMovimento; h++)
-   {
-    printf("Esquerda!\n"); //Imprime os movimentos da Rainha.
-   }
-
-   // Move o Cavalo 2 casas para baixo e 1 para a esquerda.
-   while (c < cavaloMovimento)
-   {
-    printf("Baixo!\n");
-
-    // Faz o último movimento do cavalo para a esquerda, quando já tiver sido movido 2 casas para baixo.
-    for (int f = 2; f == c; f++)
-    {
-        printf("Esquerda!");
-    }
-    c++;
-
-   }
+    // Chama as funções correspondentes para simular os movimentos
+    moverTorre(torreMovimento);
+    moverRainha(rainhaMovimento);
+    moverBispo(bispoMovimento);
+    moverCavalo(cavaloMovimento);
     
     return 0;
 }
-
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
-
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
